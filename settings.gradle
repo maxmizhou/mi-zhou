@@ -1,0 +1,3 @@
+rootProject.name = 'mi-zhou'
+include 'mi-zhou-robot'
+
