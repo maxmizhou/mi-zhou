@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: mirai-server
+  bot:
+    parsePath: D:\project\zlj\keep-moving\Mi-Zhou-Robot\Mi-Zhou-Mirai-Server\src\main\resources\parse\
+    plugin-list:
+      - com.mi.zhou.plugin.AuthPlugin
+      - com.mi.zhou.plugin.UploadVideoPlugin
+      - com.mi.zhou.plugin.DownloadVideoPlugin
+  web:
+    resources:
+      static-locations: file:E:\robot\
+
+

@@ -1,19 +1,85 @@
-plugins {
-    id 'java'
+buildscript {
+    //版本管理
+    ext {
+        lombokVersion = '1.18.26'
+        springBootVersion = '3.0.0'
+        springCloudVersion = '2022.0.1'
+        springCloudAlibabaVersion = '2022.0.0.0-RC1'
+        mysqlVersion = '8.0.13'
+        mybatisPlusVersion = '3.5.3.1'
+        robotVersion = '0.0.39'
+        lang3Version = '3.12.0'
+        commonioVersion = '2.11.0'
+    }
+    //仓库管理 给插件用的
+    repositories {
+        //本地仓库
+        mavenLocal()
+        //阿里云仓库
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        //中央仓库
+        mavenCentral()
+    }
+    //插件管理
+    dependencies {
+        //spring-boot-gradle-plugin
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+//全局管理
+allprojects {
+    apply plugin: 'java'
+    group = 'com.mi.zhou'
+    version = '1.0-SNAPSHOT'
+    sourceCompatibility = 17
+    targetCompatibility = 17
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.encoding = 'UTF-8'
+        }
+    }
+    //仓库管理
+    repositories {
+        //本地仓库
+        mavenLocal()
+        //阿里云仓库
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        //中央仓库
+        mavenCentral()
+    }
+}
+//子项目配置
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    dependencies {
+        annotationProcessor "org.projectlombok:lombok"
+        implementation "org.projectlombok:lombok"
+    }
+    dependencyManagement {
+        dependencies {
+            dependencies {
+                /*lombok*/
+                dependency "org.projectlombok:lombok:${lombokVersion}"
+                /*mybatis-plugs*/
+                dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+                /*mysql*/
+                dependency "mysql:mysql-connector-java:${mysqlVersion}"
+                /*QQRobot*/
+                dependency "net.lz1998:pbbot-spring-boot-starter:${robotVersion}"
+                //lang3
+                dependency "org.apache.commons:commons-lang3:${lang3Version}"
+                dependency "commons-io:commons-io:${commonioVersion}"
+
+            }
+        }
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        }
+    }
 }
 
 group = 'com.mi.zhou'
 version = '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
-}

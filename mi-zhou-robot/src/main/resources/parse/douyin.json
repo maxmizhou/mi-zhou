@@ -1,0 +1,17 @@
+{
+  "match_list": [
+    "<script id=\"RENDER_DATA\" type=\"application/json\">(.*?)</script>"
+  ],
+  "url_decode": true,
+  "json_path": [
+    {
+      "type": "mp4",
+      "regex": "$.41.post.data.[*].video.playAddr.[0].src"
+    },
+    {
+      "type": "jpeg",
+      "regex": "$.41.post.data.[*].video.coverUrlList[0]"
+
+    }
+  ]
+}
