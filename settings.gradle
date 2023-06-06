@@ -1,2 +1,6 @@
 rootProject.name = 'mi-zhou'
 include 'mi-zhou-robot'
+include 'mi-zhou-common'
+include 'mi-zhou-common:common-core'
+findProject(':mi-zhou-common:common-core')?.name = 'common-core'
+

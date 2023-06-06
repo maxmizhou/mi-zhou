@@ -1,0 +1,17 @@
+dependencies {
+
+
+    implementation "org.springframework:spring-context"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    testImplementation "org.slf4j:slf4j-api"
+    testImplementation "org.junit.jupiter:junit-jupiter"
+
+    compileOnly "jakarta.servlet:jakarta.servlet-api"
+    compileOnly "org.springframework:spring-web"
+    compileOnly "jakarta.validation:jakarta.validation-api"
+    compileOnly "jakarta.validation:jakarta.validation-api"
+    compileOnly "io.swagger:swagger-annotations"
+    compileOnly "io.swagger.core.v3:swagger-annotations-jakarta"
+    compileOnly "org.slf4j:slf4j-api"
+}

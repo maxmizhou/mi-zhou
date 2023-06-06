@@ -13,5 +13,3 @@ spring:
   web:
     resources:
       static-locations: file:E:\robot\
-
-

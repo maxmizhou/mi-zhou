@@ -1,6 +1,5 @@
 package com.mi.zhou;
 
-import com.mi.zhou.thread.HeaderHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
